@@ -1,0 +1,26 @@
+.itemWr {
+  width: 25%;
+  padding: 15px;
+  text-align: center;
+  a {
+    display: block;
+    box-shadow: 0 3px 20px rgba(89, 72, 129, 0.08);
+    padding: 15px;
+    background: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in;
+    color: #000;
+    height: 100%;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 3px 35px rgba(89, 72, 129, 0.40);
+      color: #000;
+    }
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    color: #273c35 ;
+  }
+}

@@ -1,0 +1,17 @@
+.commentsWr{
+    h2{
+        margin: 20px 0;
+    }
+
+}
+
+.comments{
+    > div{
+        box-shadow: 0 3px 20px rgba(89, 72, 129, 0.28);
+        padding: 10px;
+        border-radius: 5px;
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+    }
+}
