@@ -6,7 +6,6 @@ const updateBlogList = (state,action) => {
             error: null,
         }
     }
-    
     switch (action.type) {
         case "FETCH_POSTS_REQUESTED":
             return {

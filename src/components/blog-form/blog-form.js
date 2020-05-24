@@ -1,53 +1,60 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import WithBlogService  from '../HOC/with-blog-service';
-import {  compose } from "../../utils";
+import WithBlogService from '../HOC/with-blog-service';
+import { compose } from "../../utils";
 import Button from '../UI/button';
 import { fetchPostCommit } from "../../actions";
 
 import classes from './blog-form.module.scss'
 
 class BlogForm extends Component {
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const message = this.getMessage.value;
-    this.props.fetchPostCommit(message)()
-    this.getMessage.value = '';
-  };
-  
-  render() {
+    state = {
+        message: ''
+    }
 
-    return (
-        <div className={classes.blogForm}>
-          <h2>Post Comments</h2>
-          <form onSubmit={this.handleSubmit}>
-            <textarea
-                ref={(input) => (this.getMessage = input)}
-                required
-                rows="4"
-                placeholder="your comment"
-            />
-            <Button type="success" 
-            // disabled={!this.state.message}
-            >Submit Comment</Button>
-          </form>
-        </div>
-    );
-  }
-}
+    handleChange = (value) => {
+        this.setState({ message: value })
+    }
 
-const mapStateToProps = (props) => {
-    return{ props}
-}
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.fetchPostCommit(this.state.message)();
+        this.state.message = '';
+    };
 
-const mapDispatchToProps = (dispatch,ownProps) =>  {
-    const {blogService,itemId} = ownProps;
-    return {
-        fetchPostCommit: (data) => fetchPostCommit(blogService,dispatch,itemId,data)
+    render() {
+
+        return (
+            <div className={classes.blogForm}>
+                <h2>Post Comments</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <textarea
+                        onChange={(e) => this.handleChange(e.target.value.trim())}
+                        required
+                        rows="4"
+                        placeholder="your comment"
+                    />
+                    <Button type="success"
+                        disabled={!this.state.message}
+                    >Submit Comment</Button>
+                </form>
+            </div>
+        );
     }
 }
 
-export default compose (
+const mapStateToProps = (props) => {
+    return { props }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const { blogService, itemId } = ownProps;
+    return {
+        fetchPostCommit: (data) => fetchPostCommit(blogService, dispatch, itemId, data)
+    }
+}
+
+export default compose(
     WithBlogService(),
-    connect(mapStateToProps,mapDispatchToProps)
+    connect(mapStateToProps, mapDispatchToProps)
 )(BlogForm)

@@ -16,7 +16,6 @@ class BlogPageContainer extends Component {
         const { post={}, loading, error,itemId} = this.props;
         if (loading)  return  <Spinner/>
         if(error) return  <ErrorIndicator/>
-        if(post === undefined)return  <Spinner/>
         return  (
             <BlogPage post={post} itemId={itemId}/>
         )

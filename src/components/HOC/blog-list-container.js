@@ -18,6 +18,7 @@ class BlogListContainer extends Component {
         return <BlogList posts={posts}/>
     }
 }
+
 const mapStateToProps = ( { postList: { posts,loading, error} }) => {
     return{ posts, loading, error }
 }

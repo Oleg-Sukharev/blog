@@ -7,12 +7,8 @@ const BlogItem = (props) => {
     return (
         <div className={classes.itemWr}>
             <NavLink to={'/posts/' + id}>
-                <h2>
-                    {title}
-                </h2>
-                <div>
-                    {body}
-                </div>
+                <h2> {title}</h2>
+                <div>{body}</div>
             </NavLink>
         </div>
     );

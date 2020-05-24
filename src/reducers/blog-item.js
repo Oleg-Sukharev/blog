@@ -1,4 +1,4 @@
-const updateBlog= (state,action) => {
+const updateBlog = (state, action) => {
     if (state === undefined) {
         return {
             post: {},
